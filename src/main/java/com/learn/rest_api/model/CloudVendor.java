@@ -1,25 +1,38 @@
 package com.learn.rest_api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import io.swagger.annotations.ApiModel;
+import jakarta.persistence.*;
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name="cloud_vendor_info")
-public class CloudVendor {
-
+@ApiModel(description = "This table holds cloud vendor information.")
+public class CloudVendor
+{
     @Id
+    @ApiModelProperty(notes="This is a Cloud Vendor Id. It shall be unique.")
     private String vendorId;
     private String vendorName;
     private String vendorAddress;
-    private String vendorPhone;
+    //@Column(name = "vendor_phone_number", nullable = false)
+    private String vendorPhoneNumber;
 
-    public String getVedorId() {
+    public CloudVendor() {
+    }
+
+    public CloudVendor(String vendorId, String vendorName, String vendorAddress, String vendorPhoneNumber) {
+        this.vendorId = vendorId;
+        this.vendorName = vendorName;
+        this.vendorAddress = vendorAddress;
+        this.vendorPhoneNumber = vendorPhoneNumber;
+    }
+
+    public String getVendorId() {
         return vendorId;
     }
 
-    public void setVedorId(String vedorId) {
-        this.vendorId = vedorId;
+    public void setVendorId(String vendorId) {
+        this.vendorId = vendorId;
     }
 
     public String getVendorName() {
@@ -38,21 +51,11 @@ public class CloudVendor {
         this.vendorAddress = vendorAddress;
     }
 
-    public String getVendorPhone() {
-        return vendorPhone;
+    public String getVendorPhoneNumber() {
+        return vendorPhoneNumber;
     }
 
-    public void setVendorPhone(String vendorPhone) {
-        this.vendorPhone = vendorPhone;
-    }
-
-    public CloudVendor() {
-    }
-
-    public CloudVendor(String vendorId, String vendorName, String vendorAddress, String vendorPhone) {
-        this.vendorId = vendorId;
-        this.vendorName = vendorName;
-        this.vendorAddress = vendorAddress;
-        this.vendorPhone = vendorPhone;
+    public void setVendorPhoneNumber(String vendorPhoneNumber) {
+        this.vendorPhoneNumber = vendorPhoneNumber;
     }
 }
